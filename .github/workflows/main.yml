@@ -1,17 +1,16 @@
-name: Git Integration Demo
+name: Parameter Demo
 
-on: [push]
+on:
+  workflow_dispatch:
+    inputs:
+      USERNAME:
+        description: 'Enter username'
+        required: true
+        default: 'Shalini'
 
 jobs:
   build:
     runs-on: ubuntu-latest
-
     steps:
-      - name: Checkout GitHub repository
-        uses: actions/checkout@v4
-
-      - name: Verify files
-        run: |
-          echo "Files in repository:"
-          ls
-
+      - name: Print parameter
+        run: echo "Username is ${{ github.event.inputs.USERNAME }}"
