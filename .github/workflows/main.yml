@@ -1,16 +1,15 @@
-name: Parameter Demo
+name: Java Build
 
-on:
-  workflow_dispatch:
-    inputs:
-      USERNAME:
-        description: 'Enter username'
-        required: true
-        default: 'Shalini'
+on: [push]
 
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: Print parameter
-        run: echo "Username is ${{ github.event.inputs.USERNAME }}"
+      - uses: actions/checkout@v4
+
+      - name: Compile Java
+        run: javac Hello.java
+
+      - name: Run Java
+        run: java Hello
