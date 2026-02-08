@@ -7,5 +7,14 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
       - name: Print Hello
         run: echo "Hello GitHub Actions"
+
+      - name: Create file
+        run: |
+          echo "This is GitHub Actions workspace" > file.txt
+          cat file.txt
+
